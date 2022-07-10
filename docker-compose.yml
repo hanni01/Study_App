@@ -1,17 +1,17 @@
 version: '3.8'
 services:
-  nest-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: nest-api
-    restart: always
-    ports:
-      - 3000:3000
-    depends_on:
-      - nest-mysql
-    env_file:
-      - .env
+#  nest-api:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: nest-api
+#    restart: always
+#    ports:
+#      - 3000:3000
+#    depends_on:
+#      - nest-mysql
+#    env_file:
+#      - .env
 
   nest-mysql:
     image: mysql:8
