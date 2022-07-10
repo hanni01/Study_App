@@ -11,7 +11,24 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id         Int          @id @default(autoincrement())
+  email      String       @unique
+  name       String
+  StudyUsers StudyUsers[]
+}
+
+model StudyUsers {
+  user   User @relation(fields: [userId], references: [id])
+  userId Int // relation scalar field (used in the `@relation` attribute above)
+
+  study   Study @relation(fields: [studyId], references: [id])
+  studyId Int // relation scalar field (used in the `@relation` attribute above)
+
+  @@id([studyId, userId])
+}
+
+model Study {
+  id         Int          @id @default(autoincrement())
+  StudyUsers StudyUsers[]
+  category   String
 }
